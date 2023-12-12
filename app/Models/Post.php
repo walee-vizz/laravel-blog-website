@@ -73,4 +73,9 @@ class Post extends Model
 
         return $isUrl ? $this->image : Storage::disk('public')->url($this->image);
     }
+
+
+    public function likes(){
+        return $this->BelongsToMany(User::class, 'post_like')->withTimestamps();
+    }
 }

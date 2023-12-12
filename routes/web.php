@@ -20,7 +20,11 @@ Route::get('/', HomeController::class)->name('home');
 Route::get('/homepage', HomeController::class)->name('homepage');
 Route::controller(PostController::class)->name('posts.')->group(function () {
     Route::get('/blog', 'index')->name('index');
+    Route::get('/blog/{post:slug}', 'show')->name('show');
 });
+
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
