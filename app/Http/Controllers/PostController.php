@@ -46,7 +46,7 @@ class PostController extends Controller
             'post' => $post
         ];
 
-        return view('posts.show');
+        return view('posts.show', $data);
     }
 
     /**

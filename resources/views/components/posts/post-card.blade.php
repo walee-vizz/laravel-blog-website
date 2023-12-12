@@ -1,6 +1,6 @@
 @props(['post'])
 <div {{ $attributes }}>
-    <a href="{{ route('posts.show', $post->slug) }}">
+    <a wire:navigate href="{{ route('posts.show', $post->slug) }}">
         <div>
             <img class="w-full rounded-xl" src="{{ $post->getThumbnailImage() }}">
         </div>
@@ -14,13 +14,11 @@
                 Laravel
             </a> --}}
             @if ($category = $post->categories->first())
-                <x-badge wire:navigate href="{{ route('posts.index', ['category' => $category->slug]) }}"
-                    text_color="{{ $category->text_color }}" bg_color="{{ $category->bg_color }}">
-                    {{ $category->title }}
-                </x-badge>
+                <x-posts.category-badge :category="$category" />
             @endif
             <p class="text-gray-500 text-sm">{{ $post->published_at }}</p>
         </div>
-        <a href="{{ route('posts.show', $post->slug) }}" class="text-xl font-bold text-gray-900">{{ $post->title }}</a>
+        <a wire:navigate href="{{ route('posts.show', $post->slug) }}"
+            class="text-xl font-bold text-gray-900">{{ $post->title }}</a>
     </div>
 </div>
