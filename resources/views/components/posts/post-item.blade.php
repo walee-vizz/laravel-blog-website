@@ -3,7 +3,7 @@
     <div class="article-body grid grid-cols-12 gap-3 mt-5 items-start">
         <div class="article-thumbnail col-span-4 flex items-center">
             <a href="">
-                <img class="mw-100 mx-auto rounded-xl" src="{{ $post->image }}" alt="thumbnail">
+                <img class="mw-100 mx-auto rounded-xl" src="{{ $post->getThumbnailImage() }}" alt="thumbnail">
             </a>
         </div>
         <div class="col-span-8">
@@ -22,8 +22,15 @@
                 {{ $post->getExcerpt() }}
             </p>
             <div class="article-actions-bar mt-6 flex items-center justify-between">
-                <div class="flex items-center space-x-4">
-                    <span class="text-gray-500 text-sm">{{ $post->getReadingTime() }} min read</span>
+                <div class="flex gap-x-3">
+                    @foreach ($post->categories as $category)
+                        <x-badge text_color="{{ $category->text_color }}" bg_color="{{ $category->bg_color }}">
+                            {{ $category->title }}
+                        </x-badge>
+                    @endforeach
+                    <div class="flex items-center space-x-4">
+                        <span class="text-gray-500 text-sm">{{ $post->getReadingTime() }} min read</span>
+                    </div>
                 </div>
                 <div>
                     <a class="flex items-center">
