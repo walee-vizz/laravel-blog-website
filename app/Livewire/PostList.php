@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Category;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\On;
@@ -48,6 +49,8 @@ class PostList extends Component
     public function posts()
     {
         return Post::published()
+            ->with('categories', 'author')
+            ->withCount('likes')
             ->search($this->search)
             ->when($this->currentCategory, function($query){
                 $query->withCategory($this->category);
