@@ -15,6 +15,10 @@ class PostList extends Component
     use WithPagination;
     #[Url()]
     public $sort = 'desc';
+
+    #[Url()]
+    public $popular = false;
+
     #[Url()]
     public $search = '';
 
@@ -44,9 +48,12 @@ class PostList extends Component
     public function posts()
     {
         return Post::published()
-            ->where('title', 'LIKE', "%$this->search%")
+            ->search($this->search)
             ->when($this->currentCategory, function($query){
                 $query->withCategory($this->category);
+            })
+            ->when($this->popular, function($query){
+                $query->popular();
             })
             ->orderBy('published_at', $this->sort)
             ->paginate(4);

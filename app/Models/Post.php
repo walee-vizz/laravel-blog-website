@@ -37,12 +37,19 @@ class Post extends Model
 
     public function scopeWithCategory($query, $category)
     {
-        $query->whereHas('categories', function ($query) use($category) {
+        $query->whereHas('categories', function ($query) use ($category) {
             $query->where('slug', $category);
         });
-
     }
-
+    public function scopePopular($query)
+    {
+        $query->withCount('likes')
+            ->orderBy('likes_count', 'DESC');
+    }
+    public function scopeSearch($query, $search = '')
+    {
+        $query->where('title', 'LIKE', "%$search%")->orWhere('slug', 'LIKE', "%$search%");
+    }
     public function author()
     {
         return $this->belongsTo(User::class, 'user_id');
@@ -68,18 +75,21 @@ class Post extends Model
         return Str::limit(strip_tags($this->body), 100, '...');
     }
 
-    public function getThumbnailImage(){
+    public function getThumbnailImage()
+    {
         $isUrl = str_contains($this->image, 'http');
 
         return $isUrl ? $this->image : Storage::disk('public')->url($this->image);
     }
 
 
-    public function likes(){
+    public function likes()
+    {
         return $this->BelongsToMany(User::class, 'post_like')->withTimestamps();
     }
 
-    public function comments(){
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
     }
 }
