@@ -61,6 +61,9 @@ class PostList extends Component
 
     #[Computed()]
     public function currentCategory(){
+        if($this->category === null || $this->category == ''){
+            return null;
+        }
         return Category::where('slug', $this->category)->first();
     }
     public function render()
