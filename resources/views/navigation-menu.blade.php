@@ -1,4 +1,4 @@
-<nav class="flex items-center justify-between py-3 px-6 border-b border-gray-100">
+<nav class="flex items-center justify-between py-3 px-6  container m-auto">
     <div id="nav-left" class="flex items-center">
         <a wire:navigate href="{{ route('home') }}">
             <x-application-mark />
@@ -14,6 +14,7 @@
                 <x-nav-link href="{{ route('posts.index') }}" :active="request()->routeIs('posts.index')">
                     {{ __('Blog Page') }}
                 </x-nav-link>
+
             </ul>
         </div>
     </div>

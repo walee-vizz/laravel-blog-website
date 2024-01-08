@@ -1,14 +1,15 @@
 <x-app-layout :title="$post->title">
 
+    @include('partials.left_sidebar')
 
-    <article class="col-span-4 md:col-span-3 mt-10 mx-auto py-5 w-full" style="max-width:700px">
+    <article class="col-span-4 md:col-span-3 mt-10 mx-auto py-5 w-full " style="max-width:700px">
         <img class="w-full my-2 rounded-lg" src="{{ $post->getThumbnailImage() }}" alt="">
         <h1 class="text-4xl font-bold text-left text-gray-800">
             {{ $post->title }}
         </h1>
         <div class="mt-2 flex justify-between items-center">
             <div class="flex py-5 text-base items-center">
-                <x-posts.author :author="$post->author" size="sm"/>
+                <x-posts.author :author="$post->author" size="sm" />
                 <span class="text-gray-500 text-sm">| {{ $post->getReadingTime() }} min read</span>
             </div>
             <div class="flex items-center">
@@ -22,11 +23,11 @@
         </div>
 
         <div
-            class="article-actions-bar my-6 flex text-sm items-center justify-between border-t border-b border-gray-100 py-4 px-2">
+            class="article-actions-bar my-6 flex text-sm items-center justify-end border-t border-b border-gray-100 py-4 px-2">
             <div class="flex items-center">
                 <livewire:like-button :key="'like-button-' . $post->id" :$post />
             </div>
-            <div>
+            {{-- <div>
                 <div class="flex items-center">
                     <button>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -37,7 +38,7 @@
                     </button>
 
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <div class="article-content py-3 text-gray-800 text-lg text-justify">
@@ -50,8 +51,14 @@
             @endforeach
         </div>
 
-        <livewire:post-comments :key="'comments-' . $post->id" :$post  />
+        <livewire:post-comments :key="'comments-' . $post->id" :$post />
 
     </article>
+    <div id="side-bar"
+        class="border-t border-t-gray-100 md:border-t-none col-span-4 md:col-span-1 px-3 md:px-6  space-y-10 py-6 pt-10 md:border-l border-gray-100 h-screen sticky top-0 shrink">
+        <h1>Random Links</h1>
 
+        @include('posts.partials.categories-box')
+
+    </div>
 </x-app-layout>
