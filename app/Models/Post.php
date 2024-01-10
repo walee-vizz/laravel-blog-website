@@ -79,7 +79,7 @@ class Post extends Model
     {
         $isUrl = str_contains($this->image, 'http');
 
-        return $isUrl ? $this->image : Storage::disk('public')->url($this->image);
+        return $isUrl ? $this->image : asset('storage/' . $this->image);
     }
 
 

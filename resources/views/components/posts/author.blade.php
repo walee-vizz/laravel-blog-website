@@ -20,6 +20,6 @@
 @endphp
 
 <a href="https://portfolio.neotronicdev.com" class="article-meta flex py-1 text-sm items-center">
-    <img class="{{ $image_size }} rounded-full mr-3" src="{{ $author->profile_photo_url }}" alt="avatar">
+    <img class="{{ $image_size }} rounded-full mr-3" src="{{ asset('storage/'. $author->profile_photo_path)  }}" alt="avatar">
     <span class="mr-1 {{ $text_size }}">{{ $author->name }}</span>
 </a>

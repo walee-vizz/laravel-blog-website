@@ -2,7 +2,7 @@
 <div {{ $attributes }}>
     <a wire:navigate href="{{ route('posts.show', $post->slug) }}">
         <div>
-            <img class="w-full rounded-xl" src="{{ $post->getThumbnailImage() }}">
+            <img class="rounded-xl object-cover" src="{{ $post->getThumbnailImage() }}" style="width: 470px;height: 270px;">
         </div>
     </a>
     <div class="mt-3">
