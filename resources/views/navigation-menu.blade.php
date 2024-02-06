@@ -8,9 +8,9 @@
                 <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
                     {{ __('Home') }}
                 </x-nav-link>
-                <x-nav-link href="{{ route('homepage') }}" :active="request()->routeIs('homepage')">
+                {{-- <x-nav-link href="{{ route('homepage') }}" :active="request()->routeIs('homepage')">
                     {{ __('Home Page') }}
-                </x-nav-link>
+                </x-nav-link> --}}
                 <x-nav-link href="{{ route('posts.index') }}" :active="request()->routeIs('posts.index')">
                     {{ __('Blog Page') }}
                 </x-nav-link>

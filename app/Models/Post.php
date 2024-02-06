@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Storage;
 use PhpParser\Node\Expr\Cast\String_;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model
 {
@@ -72,7 +73,17 @@ class Post extends Model
 
     public function getExcerpt()
     {
-        return Str::limit(strip_tags($this->body), 100, '...');
+        // return Str::limit(strip_tags($this->body), 100, '...');
+        // Remove HTML tags and convert HTML entities to their corresponding characters
+        $plainText = html_entity_decode(strip_tags($this->body));
+
+        // Replace multiple consecutive spaces with a single space
+        $plainText = preg_replace('/\s+/', ' ', $plainText);
+
+        // Trim the text to 100 characters and add '...' at the end
+        $excerpt = Str::limit($plainText, 100, '...');
+
+        return $excerpt;
     }
 
     public function getThumbnailImage()

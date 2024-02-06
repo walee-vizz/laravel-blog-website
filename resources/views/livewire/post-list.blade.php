@@ -1,5 +1,5 @@
 <div class=" px-3 lg:px-7 py-6">
-    <div class="flex justify-between items-center border-b border-gray-100">
+    <div class="flex justify-between items-center border-b border-gray-100 gap-5">
         <div class="text-gray-600 " style="width:40rem;" >
             @include('posts.partials.search-box')
             @if ($this->currentCategory || $search)

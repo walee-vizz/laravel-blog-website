@@ -10,10 +10,11 @@ class UserStatesWidget extends BaseWidget
 {
     protected function getStats(): array
     {
+        $users = User::all();
         return [
-            Stat::make('Total Users', User::count()),
-            Stat::make('Total Admins', User::where('role', User::ROLE_ADMIN)->count()),
-            Stat::make('Total Editors', User::where('role', User::ROLE_EDITOR)->count()),
+            Stat::make('Total Users', count($users)),
+            Stat::make('Total Admins', $users->where('role', User::ROLE_ADMIN)->count()),
+            Stat::make('Total Editors', $users->where('role', User::ROLE_EDITOR)->count()),
         ];
     }
 }
