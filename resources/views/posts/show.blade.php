@@ -59,5 +59,7 @@
 
         @include('posts.partials.categories-box')
 
+        <hr class="my-3 w-75">
+        <x-banner-ads />
     </div>
 </x-app-layout>

@@ -11,7 +11,7 @@
                 </button>
             @endif
             @if ($this->currentCategory)
-                <x-badge wire:navigate
+                <x-badge
                     href="{{ route('posts.index', ['category' => $this->currentCategory->slug]) }}"
                     text_color="{{ $this->currentCategory->text_color }}"
                     bg_color="{{ $this->currentCategory->bg_color }}">

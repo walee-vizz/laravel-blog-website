@@ -32,6 +32,25 @@
         code {
             font-family: 'Courier New', monospace;
         }
+
+        /* Ads Terra Css */
+
+        .mobileShow {display: none;}
+
+            /* Smartphone Portrait and Landscape */
+            @media only screen
+            and (min-device-width : 320px)
+            and (max-device-width : 480px){
+                .mobileShow {display: inline;}
+            }
+            .mobileHide { display: inline; }
+
+            /* Smartphone Portrait and Landscape */
+            @media only screen
+            and (min-device-width : 320px)
+            and (max-device-width : 480px){
+            .mobileHide { display: none;}
+            }
     </style>
     <!-- Styles -->
     @livewireStyles
@@ -64,6 +83,7 @@
         })
 
     </script>
+    <script type='text/javascript' src='//pl22418161.toprevenuegate.com/e0/be/b9/e0beb9e3920fdbdc10b2583a589214f6.js'></script>
 </body>
 
 </html>

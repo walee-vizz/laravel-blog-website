@@ -5,13 +5,13 @@
         </a>
         <div class="top-menu ml-10">
             <ul class="flex space-x-4">
-                <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
+                <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')" :navigate="false">
                     {{ __('Home') }}
                 </x-nav-link>
                 {{-- <x-nav-link href="{{ route('homepage') }}" :active="request()->routeIs('homepage')">
                     {{ __('Home Page') }}
                 </x-nav-link> --}}
-                <x-nav-link href="{{ route('posts.index') }}" :active="request()->routeIs('posts.index')">
+                <x-nav-link href="{{ route('posts.index') }}" :active="request()->routeIs('posts.index')" :navigate="false">
                     {{ __('Blog Page') }}
                 </x-nav-link>
 

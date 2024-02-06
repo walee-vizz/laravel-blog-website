@@ -1,6 +1,6 @@
 @props(['post'])
 <div {{ $attributes }}>
-    <a wire:navigate href="{{ route('posts.show', $post->slug) }}">
+    <a href="{{ route('posts.show', $post->slug) }}">
         <div>
             <img class="rounded-xl object-cover" src="{{ $post->getThumbnailImage() }}" alt="Thumbnail" style="width: 470px;height: 270px;">
         </div>
@@ -18,7 +18,7 @@
             @endif
             <p class="text-gray-500 text-sm">{{ $post->published_at }}</p>
         </div>
-        <a wire:navigate href="{{ route('posts.show', $post->slug) }}"
+        <a href="{{ route('posts.show', $post->slug) }}"
             class="text-xl font-bold text-gray-900">{{ $post->title }}</a>
     </div>
 </div>

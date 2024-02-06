@@ -10,7 +10,8 @@
             <x-left-side-bar-link text="Side Nav Link" :icon="''" /> --}}
         </ul>
     </nav>
-    <hr class="text-center w-75">
-    @include('posts.partials.categories-box')
+    <hr class="text-center w-75 my-3">
+    {{-- @include('posts.partials.categories-box') --}}
+    <x-banner-ads />
 
 </div>
